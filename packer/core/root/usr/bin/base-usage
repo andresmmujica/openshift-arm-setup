@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+cat <<EOF
+This template serves as the base template for all OpenShift MAZ Setup provisioner templates.
+It provides all essential libraries and development tools needed to
+successfully provisions a small OpenShift environment (1 master, x app nodes) that
+is suitable for demos, POCs and small workshops.
+
+To use this template as a base template, you need to have 's2i/bin' directory in the
+same directory as your packer template JSON file. This directory should contain S2I
+scripts.
+
+This base template also provides the default user you should use to run your
+provisioner. Your JSON file should include this instruction after you finish
+installing software:
+
+USER default
+
+The default directory for installing your provisioner sources is
+'/opt/app-root/src' and the WORKDIR and HOME for the 'default' user is set
+to this directory as well. In your S2I scripts, you don't have to use absolute
+path, but rather rely on the relative path.
+
+To learn more about S2I visit: https://github.com/openshift/source-to-image
+EOF
