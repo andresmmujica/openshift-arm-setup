@@ -2,16 +2,6 @@
 
 This is an Azure Resource Manager template that provisions a HA OpenShift environment (1-5 master, 1-3 infra, and 1-30 app node) that is suitable for demos, POCs and small workshops.
 
-## Getting Started
-
-To use this project, you'll need (at minimum):
-
-- Python 2 >=2.7.9 or Python 3 >=3.4
-
-## Setup/Config
-
-The following requires Azure CLI 2.0.8 or later. You can verify the CLI version with the `az --version` command. To update the CLI version, see [Install Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latesti).
-
 ## Prerequisites
 
 ### 1. Fork the `openshift-arm-setup` repo
@@ -67,39 +57,43 @@ wget $GITREPO \
 && unset DIRPATH GITUSER GITREPO ARCHIVE temp
 ```
 
-1. [Sign in to Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#sign-in-to-azure)
+## Setup/Config
+
+The following requires Azure CLI 2.0.8 or later. You can verify the CLI version with the `az --version` command. To update the CLI version, see [Install Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latesti).
+
+### 1. [Sign in to Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#sign-in-to-azure)
 ```sh
 az login
 ```
 
-2. [Create a resource group](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-a-resource-group)
+### 2. [Create a resource group](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-a-resource-group)
 ```sh
 az group create --name keyvaultrg --location eastus
 ```
 
-3. [Create a key vault](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-an-ssh-key)
+### 3. [Create a key vault](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-an-ssh-key)
 ```sh
 az keyvault create --resource-group keyvaultrg --name changeme --enabled-for-template-deployment true --location eastus
 ```
 
  **Notice** the name for the keyvault must be _globally unique_ to Azure.
 
-4. [Create an SSH key](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-an-ssh-key)
+### 4. [Create an SSH key](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-an-ssh-key)
 ```sh
 ssh-keygen -f ~/.ssh/openshift -t rsa -N ''
 ```
 
-5. [Store the SSH private key in Azure Key Vault](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#store-the-ssh-private-key-in-azure-key-vault)
+### 5. [Store the SSH private key in Azure Key Vault](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#store-the-ssh-private-key-in-azure-key-vault)
 ```sh
 az keyvault secret set --vault-name changeme --name keysecret --file ~/.ssh/openshift
 ```
 
-6. [Create a service principal](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-a-service-principal)
+### 6. [Create a service principal](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#create-a-service-principal)
 ```sh
 az ad sp create-for-rbac --role contributor --scopes $(az group show --name keyvaultrg --query id | sed -e 's/\"\(.*\)\"/\1/')
 ```
 
-7. Set environment variables (optional) and update `azuredeploy.parameters.json`
+### 7. Set environment variables (optional) and update `azuredeploy.parameters.json`
 ```sh
 export AZURE_CLIENT_ID="" #appID/aadClientId
 export AZURE_SECRET="" #password/aadClientSecret
