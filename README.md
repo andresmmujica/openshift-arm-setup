@@ -61,7 +61,7 @@ wget $GITREPO \
 
 ## Setup/Config
 
-The following requires Azure CLI 2.0.8 or later. You can verify the CLI version with the `az --version` command. To update the CLI version, see [Install Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latesti).
+The following requires Azure CLI 2.0.8 or later. You can verify the CLI version with the `az --version` command. To update the CLI version, see [Install Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### 1. [Sign in to Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#sign-in-to-azure)
 ```sh
