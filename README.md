@@ -2,6 +2,8 @@
 
 This is an Azure Resource Manager template that provisions a HA OpenShift environment (1-5 master, 1-3 infra, and 1-30 app node) that is suitable for demos, POCs and small workshops.
 
+![Architecture Diagram](./docs/openshiftpoc.png)
+
 ## Prerequisites
 
 ### 1. Fork the `openshift-arm-setup` repo
