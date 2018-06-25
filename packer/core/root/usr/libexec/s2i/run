@@ -1,3 +1,0 @@
-#!/bin/bash
-
-. /opt/app-root/etc/generate_packer_user
