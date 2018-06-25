@@ -2,11 +2,70 @@
 
 This is an Azure Resource Manager template that provisions a HA OpenShift environment (1-5 master, 1-3 infra, and 1-30 app node) that is suitable for demos, POCs and small workshops.
 
+## Getting Started
+
+To use this project, you'll need (at minimum):
+
+- Python 2 >=2.7.9 or Python 3 >=3.4
+
 ## Setup/Config
 
 The following requires Azure CLI 2.0.8 or later. You can verify the CLI version with the `az --version` command. To update the CLI version, see [Install Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latesti).
 
 ## Prerequisites
+
+### 1. Fork the `openshift-arm-setup` repo
+
+Forking is a simple two-step process.
+
+1. On GitHub, navigate to the <https://github.com/ecwpz91/openshift-arm-setup> repo.
+2. In the top-right corner of the page, click **Fork**.
+
+That's it! Now, you have a [fork][git-fork] of the original ecwpz91/openshift-arm-setup repo.
+
+### 2. Create a local clone of your fork
+
+Right now, you have a fork of the `openshift-arm-setup` repo, but you don't have the files in that repo on your computer. Let's create a [clone][git-clone] of your fork locally on your computer.
+
+```sh
+git clone git@github.com:your-username/openshift-arm-setup.git
+cd openshift-arm-setup
+
+# Configure git to sync your fork with the original repo
+git remote add upstream https://github.com/ecwpz91/openshift-arm-setup
+
+# Never push to upstream repo
+git remote set-url --push upstream no_push
+```
+
+### 3. Verify your [remotes][git-remotes]
+
+To verify the new upstream repo you've specified for your fork, type `git remote -v`. You should see the URL for your fork as `origin`, and the URL for the original repo as `upstream`.
+
+```sh
+origin  git@github.com:your-username/openshift-arm-setup.git (fetch)
+origin  git@github.com:your-username/openshift-arm-setup.git (push)
+upstream        https://github.com/ecwpz91/openshift-arm-setup (fetch)
+upstream        no_push (push)
+```
+
+### 4. No `git`? No problem!
+
+```sh
+DIRPATH="${HOME}/Downloads/openshift-arm-setup"; GITUSER="ecwpz91"
+GITREPO="https://github.com/${GITUSER}/openshift-arm-setup/archive/master.zip"
+ARCHIVE="$(printf "%s" "${GITREPO##*/}")"
+
+# Download and extract
+wget $GITREPO \
+&& temp="$(mktemp -d)" \
+&& unzip -d $temp $ARCHIVE \
+&& mkdir -p $DIRPATH \
+&& mv $temp/*/* $DIRPATH \
+&& rm -rf $temp $ARCHIVE \
+&& cd $DIRPATH \
+&& unset DIRPATH GITUSER GITREPO ARCHIVE temp
+```
 
 1. [Sign in to Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/openshift-prerequisites#sign-in-to-azure)
 ```sh
