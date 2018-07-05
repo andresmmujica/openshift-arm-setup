@@ -98,9 +98,9 @@ az ad sp create-for-rbac --role contributor --scopes $(az group show --name keyv
 ### 7. Set environment variables (optional) and update `azuredeploy.parameters.json`
 ```sh
 export AZURE_CLIENT_ID="" #appID/aadClientId
-export AZURE_SECRET="" #password/aadClientSecret
+export AZURE_CLIENT_SECRET="" #password/aadClientSecret
 export AZURE_SUBSCRIPTION_ID=""
-export AZURE_TENANT="" #tenant
+export AZURE_TENANT_ID="" #tenant
 export AZURE_LOCATION=""
 ```
 
