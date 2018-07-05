@@ -95,7 +95,7 @@ az keyvault secret set --vault-name changeme --name keysecret --file ~/.ssh/open
 az ad sp create-for-rbac --role contributor --scopes $(az group show --name keyvaultrg --query id | sed -e 's/\"\(.*\)\"/\1/')
 ```
 
-### 7. Set environment variables (optional) and update `azuredeploy.parameters.json`
+### 7. Set environment variables (optional)
 ```sh
 export AZURE_CLIENT_ID="" #appID/aadClientId
 export AZURE_CLIENT_SECRET="" #password/aadClientSecret
@@ -103,6 +103,10 @@ export AZURE_SUBSCRIPTION_ID=""
 export AZURE_TENANT_ID="" #tenant
 export AZURE_LOCATION=""
 ```
+
+### 8. Update `azuredeploy.parameters.json`
+
+Locate and update any `changeme` values within the deployment configruation file before proceeding to the next section.
 
 ## Deployment
 
