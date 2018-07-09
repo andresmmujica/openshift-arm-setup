@@ -13,7 +13,7 @@ Forking is a simple two-step process.
 1. On GitHub, navigate to the <https://github.com/ecwpz91/openshift-arm-setup> repo.
 2. In the top-right corner of the page, click **Fork**.
 
-That's it! Now, you have a [fork][git-fork] of the original ecwpz91/openshift-arm-setup repo.
+That's it! Now, you have a [fork](https://help.github.com/articles/fork-a-repo/) of the original ecwpz91/openshift-arm-setup repo.
 
 ### 2. Create a local clone of your fork
 
