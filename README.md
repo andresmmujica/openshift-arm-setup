@@ -17,7 +17,7 @@ That's it! Now, you have a [fork](https://help.github.com/articles/fork-a-repo/)
 
 ### 2. Create a local clone of your fork
 
-Right now, you have a fork of the `openshift-arm-setup` repo, but you don't have the files in that repo on your computer. Let's create a [clone][git-clone] of your fork locally on your computer.
+Right now, you have a fork of the `openshift-arm-setup` repo, but you don't have the files in that repo on your computer. Let's create a [clone](https://git-scm.com/docs/git-clone) of your fork locally on your computer.
 
 ```sh
 git clone git@github.com:your-username/openshift-arm-setup.git
@@ -30,7 +30,7 @@ git remote add upstream https://github.com/ecwpz91/openshift-arm-setup
 git remote set-url --push upstream no_push
 ```
 
-### 3. Verify your [remotes][git-remotes]
+### 3. Verify your [remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
 
 To verify the new upstream repo you've specified for your fork, type `git remote -v`. You should see the URL for your fork as `origin`, and the URL for the original repo as `upstream`.
 
