@@ -117,5 +117,5 @@ az group deployment create -g keyvaultrg --name ocpdeployment --template-file ./
 Use the `az group delete` command to remove the resource group, OpenShift cluster, and clean up all related resources when they're no longer needed.
 
 ```sh
-az group delete -n ocpkeyvaultrg
+az group delete -n keyvaultrg
 ```
