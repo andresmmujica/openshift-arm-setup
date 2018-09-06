@@ -13,11 +13,11 @@ Forking is a simple two-step process.
 1. On GitHub, navigate to the <https://github.com/ecwpz91/openshift-arm-setup> repo.
 2. In the top-right corner of the page, click **Fork**.
 
-That's it! Now, you have a [fork][git-fork] of the original ecwpz91/openshift-arm-setup repo.
+That's it! Now, you have a [fork](https://help.github.com/articles/fork-a-repo/) of the original ecwpz91/openshift-arm-setup repo.
 
 ### 2. Create a local clone of your fork
 
-Right now, you have a fork of the `openshift-arm-setup` repo, but you don't have the files in that repo on your computer. Let's create a [clone][git-clone] of your fork locally on your computer.
+Right now, you have a fork of the `openshift-arm-setup` repo, but you don't have the files in that repo on your computer. Let's create a [clone](https://git-scm.com/docs/git-clone) of your fork locally on your computer.
 
 ```sh
 git clone git@github.com:your-username/openshift-arm-setup.git
@@ -30,7 +30,7 @@ git remote add upstream https://github.com/ecwpz91/openshift-arm-setup
 git remote set-url --push upstream no_push
 ```
 
-### 3. Verify your [remotes][git-remotes]
+### 3. Verify your [remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
 
 To verify the new upstream repo you've specified for your fork, type `git remote -v`. You should see the URL for your fork as `origin`, and the URL for the original repo as `upstream`.
 
@@ -95,14 +95,18 @@ az keyvault secret set --vault-name changeme --name keysecret --file ~/.ssh/open
 az ad sp create-for-rbac --role contributor --scopes $(az group show --name keyvaultrg --query id | sed -e 's/\"\(.*\)\"/\1/')
 ```
 
-### 7. Set environment variables (optional) and update `azuredeploy.parameters.json`
+### 7. Set environment variables (optional)
 ```sh
 export AZURE_CLIENT_ID="" #appID/aadClientId
-export AZURE_SECRET="" #password/aadClientSecret
+export AZURE_CLIENT_SECRET="" #password/aadClientSecret
 export AZURE_SUBSCRIPTION_ID=""
-export AZURE_TENANT="" #tenant
+export AZURE_TENANT_ID="" #tenant
 export AZURE_LOCATION=""
 ```
+
+### 8. Update `azuredeploy.parameters.json`
+
+Locate and update any `changeme` values within the deployment configruation file before proceeding to the next section.
 
 ## Deployment
 
